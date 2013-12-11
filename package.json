@@ -1,7 +1,7 @@
 {
 	"name": "messagebar",
 	"version": "0.1.0",
-	"description": "A CSS3 backed anitmation message bar in javascript",
+	"description": "simple alert() alternative JavaScript Library",
 	"keywords": ["message", "alert", "notify", "notice", "css3"],
 	"homepage": "http://www.codersgrid.com",
 	"devDependencies": {

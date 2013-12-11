@@ -54,9 +54,7 @@
 
 
         </div> <!-- /container -->
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="src/messagebar.js"></script>
+        <script src="dist/js/messagebar.min.js"></script>
         <script>
         (function(){
 
@@ -69,12 +67,10 @@
 
                 var type = this.getAttribute('data-message-type'),
                     message = this.getAttribute('data-message');
-                console.log(msgBar);
                 msgBar[type].apply(msgBar, [message]);
             }
 
             var bottons = document.querySelectorAll('.btn');
-            console.log(bottons);
             for(var i = 0; i < bottons.length; i++){
                 bottons[i].addEventListener('click', show_message, false)
             }

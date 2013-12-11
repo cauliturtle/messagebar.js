@@ -1,4 +1,4 @@
-# Messagebar.js - showing message to user in fancy way
+# Messagebar.js - simple alert() alternative JavaScript Library
 
 Messagebar.js will show message on the top of the view of user client's browser by default. It backed by CSS3 for animation slide up/down. Rather than simple `alert()` function, it may be more attractive for UX and interactive.
 
