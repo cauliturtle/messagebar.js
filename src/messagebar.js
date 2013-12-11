@@ -129,11 +129,12 @@ MessageBar.prototype.show = function(message, options){
  * Close the message bar
  */
 MessageBar.prototype.close = function(){
-
+	var that = this;
 	var disappear_class = this.message_dom.getAttribute('data-mb-disappear-class');
-
-	this.message_dom.addEventListener('transitionend', this.restore.bind(this), true);
 	this.message_dom.classList.add(disappear_class);
+	setTimeout(function(){
+		that.restore();
+	}, 250);
 };
 
 /**
@@ -142,9 +143,9 @@ MessageBar.prototype.close = function(){
 MessageBar.prototype.restore = function(){
 	this.is_showing = false;
 	this.message_dom.innerHTML = '';
+	this.message_dom.removeEventListener('transitionend');
 	this.message_dom.className = this.setting.default_class;
 	this.message_dom.removeAttribute('data-mb-disappear-class');
-	this.message_dom.removeEventListener('transitionend.disappear');
 	clearTimeout(this.self_timer);
 	this.self_timer = null;
 };
@@ -153,7 +154,7 @@ MessageBar.prototype.restore = function(){
 // alert message bar
 MessageBar.prototype.alert = function(message){
 	this.show(message, {
-		display_class: ['mb--messagebar--show','mb--messagebar--alert']
+		display_class: ['mb--messagebar--show','mb--messagebar--danger']
 	});
 };
 
@@ -172,6 +173,6 @@ MessageBar.prototype.warning = function(message){
 };
 
 // exports to global
-this.MessageBar = MessageBar;
+global.MessageBar = MessageBar;
 
-}).call(this);
+}).call(this, this);
