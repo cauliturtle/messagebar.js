@@ -118,7 +118,10 @@ MessageBar.prototype.show = function(message, options){
 	if('string' === typeof local_option.display_class){
 		local_option.display_class = [local_option.display_class];
 	}
-	this.message_dom.classList.add.apply(this.message_dom.classList, local_option.display_class);
+	
+	for(var i in local_option.display_class){
+		this.message_dom.classList.add(local_option.display_class[i]);
+	}
 	this.message_dom.setAttribute('data-mb-disappear-class', local_option.disappear_class);
 
 	this.self_timer = setTimeout(this.close.bind(this), local_option.close_delay);
@@ -143,7 +146,7 @@ MessageBar.prototype.close = function(){
 MessageBar.prototype.restore = function(){
 	this.is_showing = false;
 	this.message_dom.innerHTML = '';
-	this.message_dom.removeEventListener('transitionend');
+	// this.message_dom.removeEventListener('transitionend');
 	this.message_dom.className = this.setting.default_class;
 	this.message_dom.removeAttribute('data-mb-disappear-class');
 	clearTimeout(this.self_timer);
